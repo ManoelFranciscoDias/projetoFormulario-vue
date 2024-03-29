@@ -5,6 +5,7 @@ const mostrarResultado = ref(false)
 
 const dados = reactive({
   nome: '',
+  sobrenome: '',
   email: '',
   senha: '',
   confirmSenha: '',
@@ -18,32 +19,44 @@ const dados = reactive({
 <template>
   <div class="container">
     <div class="formulario">
-      <h1>FORMULARIO</h1>
+
+
+    <h1 style="color: white;">FORMULARIO</h1>  
 
       <div class="row">
-        <input type="text" v-model="dados.nome" placeholder="Nome" />
+        <label for="">Nome:</label>
+        <input type="text" v-model="dados.nome"/>
+      
+        <label for="">Sobrenome:</label>
+        <input type="text" v-model="dados.sobrenome"/>
       </div>
       <div class="row">
-        <input type="text" v-model="dados.email" placeholder="Email" />
+      <label for="">Email:</label>
+        <input type="text" v-model="dados.email"/>
       </div>
       <div class="row">
-        <input type="text" v-model="dados.senha" placeholder="Senha" />
+        <label for="">Senha:</label>
+        <input type="text" v-model="dados.senha"/>
       </div>
       <div class="row">
-        <input type="text" v-model="dados.confirmSenha" placeholder="Confirme sua senha" />
+        <label for="">Confirme a senha:</label>
+        <input type="text" v-model="dados.confirmSenha"/>
       </div>
       <div class="row">
+        <label for="">Data de nascimento:</label>
         <input type="date" v-model="dados.data" />
       </div>
       <div class="row">
+        <label for="">Cidade:</label>
         <input type="text" v-model="dados.cidade" />
       </div>
 
-      <button @click="mostrarResultado = !mostrarResultado">Mostrar</button>
+      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
     <div class="resultado">
-      <h1>RESULTADO</h1>
+      <h1 style="color: white;">RESULTADO</h1>
       <p>Nome: {{ dados.nome }}</p>
+      <p>Sobrenome: {{ dados.sobrenome }}</p>
       <p>Email: {{ dados.email }}</p>
       <p>Senha: {{ dados.senha }}</p>
       <p>Confirme sua senha: {{ dados.confirmSenha }}</p>
@@ -52,16 +65,19 @@ const dados = reactive({
 
       <p>{{ mostrarResultado }}</p>
     </div>
+    
   </div>
 </template>
 
 <style scoped>
 .formulario {
-  background-color: aqua;
+  background-color: rgb(26, 24, 24);
+  
 }
 
 .resultado {
-  background-color: blue;
+  background-color: rgb(26, 24, 24);
+  color: white
 }
 
 .container {
@@ -69,14 +85,17 @@ const dados = reactive({
   gap: 2rem;
   justify-content: center;
   margin-top: 1rem;
+
 }
 
 .formulario,
 .resultado {
+
   width: 45vw;
-  min-height: 70vh;
+  min-height: 20vh;
   border-radius: 10px;
   padding: 20px;
+  
 }
 
 h1 {
@@ -88,5 +107,27 @@ width: 80%;
 margin: 1.3 0;
 display: flex;
 flex-direction: column;
+align-items: center;
+
 }
+
+
+
+
+button {
+  background-color:#2a5239;
+  border: none;
+  height: 30px;
+  width: 40vh;
+  color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color:#2d6d45;
+  
+}
+
+
 </style>
