@@ -57,15 +57,15 @@ const estados = [
       </div>
       <div class="row">
         <label for="">Email:</label>
-        <input type="text" v-model="dados.email" />
+        <input type="email" v-model="dados.email" />
       </div>
       <div class="row">
         <label for="">Senha:</label>
-        <input type="text" v-model="dados.senha" />
+        <input type="password" v-model="dados.senha" />
       </div>
       <div class="row">
         <label for="">Confirme a senha:</label>
-        <input type="text" v-model="dados.confirmSenha" />
+        <input type="password" v-model="dados.confirmSenha" />
       </div>
       <div class="row">
         <label for="">Data de nascimento:</label>
@@ -139,7 +139,7 @@ const estados = [
             <label for="langJava">Java</label>
           </div>
         </div>
-      </div>
+        </div>
 
       <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
