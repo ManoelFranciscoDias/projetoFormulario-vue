@@ -12,6 +12,7 @@ const dados = reactive({
   cidade: '',
   estado: '',
   hobbies: [],
+  linguagem: ''
 })
 
 const estados = [
@@ -75,16 +76,75 @@ const estados = [
         <input type="text" v-model="dados.cidade" />
       </div>
       <div class="row">
-        <label for="stateField" class="form-label">Estado</label>
-            <select class="form-select" id="stateField" v-model="dados.estado">
-              <option selected disabled value="">Selecionar...</option>
-              <option v-for="estado of estados" :key="estado.uf" :value="estado.name">{{ estado.name }}</option>
-            </select>
+        <label for="stateField" class="form-label">Estado:</label>
+        <select class="form-select" id="stateField" v-model="dados.estado">
+          <option selected disabled value="">Selecionar...</option>
+          <option v-for="estado of estados" :key="estado.uf" :value="estado.name">
+            {{ estado.name }}
+          </option>
+        </select>
+      </div>
 
+      <div class="row">
+        <label>Hobbies:</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="esportes" value="esportes" v-model="dados.hobbies" />
+          <label for="esportes">Esportes</label>
+
+          <input type="checkbox" id="musica" value="música" v-model="dados.hobbies" />
+          <label for="musica">Música</label>
+
+          <input type="checkbox" id="livros" value="livros" v-model="dados.hobbies" />
+          <label for="livros">Livros</label>
+
+          <input type="checkbox" id="filmes" value="filmes" v-model="dados.hobbies" />
+          <label for="filmes">Filmes</label>
+        </div>
+
+        <div class="row">
+          <label>Linguagem:</label>
+          <div class="radio-group">
+
+            <input
+              
+              type="radio"
+              v-model="dados.linguagem"
+              value="C"
+              id="langC"
+            />
+            <label for="langC">C</label>
+            <input
+              
+              type="radio"
+              v-model="dados.linguagem"
+              value="JS"
+              id="langJS"
+            />
+            <label for="langJS">JS</label>
+            <input
+              
+              type="radio"
+              v-model="dados.linguagem"
+              value="Python"
+              id="langPython"
+            />
+            <label for="langPython">Python</label>
+            <input
+              
+              type="radio"
+              v-model="dados.linguagem"
+              value="Java"
+              id="langJava"
+            />
+            <label for="langJava">Java</label>
+          </div>
+        </div>
       </div>
 
       <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
+
+
     <div class="resultado">
       <h1 style="color: white">RESULTADO</h1>
       <p>Nome: {{ dados.nome }}</p>
@@ -94,6 +154,8 @@ const estados = [
       <p>Data: {{ dados.data }}</p>
       <p>Cidade: {{ dados.cidade }}</p>
       <p>Estado: {{ dados.estado }}</p>
+      <p>Hobbies: {{ dados.hobbies }}</p>
+      <P>Linguagem favorita: {{ dados.linguagem }}</P>
 
       <p>{{ mostrarResultado }}</p>
     </div>
@@ -151,6 +213,4 @@ button {
 button:hover {
   background-color: #2d6d45;
 }
-
-
 </style>
