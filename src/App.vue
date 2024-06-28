@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue'
 
 const mostrarResultado = ref(false)
 
+
 const dados = reactive({
   nome: '',
   email: '',
@@ -42,6 +43,10 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
+
+
+
+
 </script>
 
 <template>
@@ -58,11 +63,11 @@ const estados = [
         <input type="email" v-model="dados.email" />
       </div>
       <div class="row">
-        <label for="">Senha:</label>
+        <label for="senha">Senha:</label>
         <input type="password" v-model="dados.senha" />
       </div>
       <div class="row">
-        <label for="">Confirme a senha:</label>
+        <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
       </div>
       <div class="row">
@@ -97,8 +102,7 @@ const estados = [
       <p>Data: {{ dados.data }}</p>
       <p>Cidade: {{ dados.cidade }}</p>
       <p>Estado: {{ dados.estado }}</p>
-      <p>Hobbies: {{ dados.hobbies }}</p>
-      <P>Linguagem favorita: {{ dados.linguagem }}</P>
+      
 
       <button @click="mostrarResultado= !mostrarResultado">MOSTRAR</button>
     </div>
@@ -110,6 +114,7 @@ const estados = [
 </template>
 
 <style scoped>
+
 .formulario {
   background-color: rgb(24, 26, 25);
 }
@@ -117,6 +122,13 @@ const estados = [
 .resultado {
   background-color: rgb(26, 24, 24);
   color: white;
+  border-radius: 10px;
+  padding: 40px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7rem;
 }
 
 .container {
@@ -126,14 +138,10 @@ const estados = [
   margin-top: 2rem;
 }
 
-.formulario,
-.resultado {
-  
+.formulario {
   border-radius: 10px;
   padding: 40px;
 }
-
-
 
 .formulario,
 .row {
