@@ -11,8 +11,6 @@ const dados = reactive({
   data: Number,
   cidade: '',
   estado: '',
-  hobbies: [],
-  linguagem: ''
 })
 
 const estados = [
@@ -48,7 +46,7 @@ const estados = [
 
 <template>
   <div class="container">
-    <div class="formulario">
+    <div v-if="!mostrarResultado" class="formulario">
       <h1 style="color: white">FORMULARIO</h1>
 
       <div class="row">
@@ -85,67 +83,12 @@ const estados = [
         </select>
       </div>
 
-      <div class="row">
-        <label>Hobbies:</label>
-        <div class="checkbox-group">
-          <input type="checkbox" id="esportes" value="esportes" v-model="dados.hobbies" />
-          <label for="esportes">Esportes</label>
+  <button @click="mostrarResultado= !mostrarResultado">MOSTRAR</button>
 
-          <input type="checkbox" id="musica" value="música" v-model="dados.hobbies" />
-          <label for="musica">Música</label>
-
-          <input type="checkbox" id="livros" value="livros" v-model="dados.hobbies" />
-          <label for="livros">Livros</label>
-
-          <input type="checkbox" id="filmes" value="filmes" v-model="dados.hobbies" />
-          <label for="filmes">Filmes</label>
-        </div>
-
-        <div class="row">
-          <label>Linguagem:</label>
-          <div class="radio-group">
-
-            <input
-              
-              type="radio"
-              v-model="dados.linguagem"
-              value="C"
-              id="langC"
-            />
-            <label for="langC">C</label>
-            <input
-              
-              type="radio"
-              v-model="dados.linguagem"
-              value="JS"
-              id="langJS"
-            />
-            <label for="langJS">JS</label>
-            <input
-              
-              type="radio"
-              v-model="dados.linguagem"
-              value="Python"
-              id="langPython"
-            />
-            <label for="langPython">Python</label>
-            <input
-              
-              type="radio"
-              v-model="dados.linguagem"
-              value="Java"
-              id="langJava"
-            />
-            <label for="langJava">Java</label>
-          </div>
-        </div>
-        </div>
-
-      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
+      
     </div>
 
-
-    <div class="resultado">
+    <div v-if="mostrarResultado" class="resultado">
       <h1 style="color: white">RESULTADO</h1>
       <p>Nome: {{ dados.nome }}</p>
       <p>Email: {{ dados.email }}</p>
@@ -157,14 +100,18 @@ const estados = [
       <p>Hobbies: {{ dados.hobbies }}</p>
       <P>Linguagem favorita: {{ dados.linguagem }}</P>
 
-      <p>{{ mostrarResultado }}</p>
+      <button @click="mostrarResultado= !mostrarResultado">MOSTRAR</button>
     </div>
   </div>
+
+
+    
+  
 </template>
 
 <style scoped>
 .formulario {
-  background-color: rgb(26, 24, 24);
+  background-color: rgb(24, 26, 25);
 }
 
 .resultado {
@@ -176,25 +123,21 @@ const estados = [
   display: flex;
   gap: 2rem;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .formulario,
 .resultado {
-  width: 45vw;
-  min-height: 20vh;
+  
   border-radius: 10px;
-  padding: 20px;
+  padding: 40px;
 }
 
-h1 {
-  text-align: center;
-}
+
 
 .formulario,
 .row {
-  width: 80%;
-  margin: 1.3 0;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,8 +146,8 @@ h1 {
 button {
   background-color: #2a5239;
   border: none;
-  height: 30px;
-  width: 40vh;
+  height: 40px;
+  width: 30vh;
   color: white;
   border-radius: 10px;
   margin-top: 20px;
