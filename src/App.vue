@@ -3,7 +3,6 @@ import { reactive, ref } from 'vue'
 
 const mostrarResultado = ref(false)
 
-
 const dados = reactive({
   nome: '',
   email: '',
@@ -12,6 +11,7 @@ const dados = reactive({
   data: Number,
   cidade: '',
   estado: '',
+  hobbies: []
 })
 
 const estados = [
@@ -43,10 +43,6 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
-
-
-
-
 </script>
 
 <template>
@@ -54,31 +50,31 @@ const estados = [
     <div v-if="!mostrarResultado" class="formulario">
       <h1 style="color: white">FORMULARIO</h1>
 
-      <div class="row">
+      <div class="column">
         <label for="">Nome:</label>
         <input type="text" v-model="dados.nome" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="">Email:</label>
         <input type="email" v-model="dados.email" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="senha">Senha:</label>
         <input type="password" v-model="dados.senha" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="">Data de nascimento:</label>
         <input type="date" v-model="dados.data" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="">Cidade:</label>
         <input type="text" v-model="dados.cidade" />
       </div>
-      <div class="row">
+      <div class="column">
         <label for="stateField" class="form-label">Estado:</label>
         <select class="form-select" id="stateField" v-model="dados.estado">
           <option selected disabled value="">Selecionar...</option>
@@ -87,10 +83,53 @@ const estados = [
           </option>
         </select>
       </div>
+      <div>
+        <p>Hobbies:</p>
+        <div class="row">
+          <div class="check-item">
+            <input
+              class="hobbie01"
+              type="checkbox"
+              id="hobbies01"
+              value="Esportes"
+              v-model="dados.hobbies"
+            />
+            <label for="hobbies01">Esportes</label>
+          </div>
+          <div class="check-item">
+            <input
+              class="hobbies02"
+              type="checkbox"
+              id="hobbies02"
+              value="Cozinhar"
+              v-model="dados.hobbies"
+            />
+            <label for="hobbies02">Cozinhar</label>
+          </div>
+          <div class="check-item">
+            <input
+              class="hobbies03"
+              type="checkbox"
+              id="hobbies03"
+              value="Jogos"
+              v-model="dados.hobbies"
+            />
+            <label for="hobbies03">Jogos</label>
+          </div>
+          <div class="check-item">
+            <input
+              class="hobbies04"
+              type="checkbox"
+              id="hobbies04"
+              value="Filmes"
+              v-model="dados.hobbies"
+            />
+            <label for="hobbies04">Filmes</label>
+          </div>
+        </div>
+      </div>
 
-  <button @click="mostrarResultado= !mostrarResultado">MOSTRAR</button>
-
-      
+      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
 
     <div v-if="mostrarResultado" class="resultado">
@@ -102,19 +141,14 @@ const estados = [
       <p>Data: {{ dados.data }}</p>
       <p>Cidade: {{ dados.cidade }}</p>
       <p>Estado: {{ dados.estado }}</p>
-      
+      <p>Hobbies: {{ dados.hobbies }}</p>
 
-      <button @click="mostrarResultado= !mostrarResultado">MOSTRAR</button>
+      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
   </div>
-
-
-    
-  
 </template>
 
 <style scoped>
-
 .formulario {
   background-color: rgb(24, 26, 25);
 }
@@ -144,11 +178,22 @@ const estados = [
 }
 
 .formulario,
-.row {
+.column {
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.check-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 button {
@@ -163,5 +208,17 @@ button {
 
 button:hover {
   background-color: #2d6d45;
+}
+
+p,
+.hobbie {
+  color: white;
+  text-align: center;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  margin-right: 0.2rem;
+  margin-top: 0.3rem;
 }
 </style>
