@@ -11,7 +11,9 @@ const dados = reactive({
   data: Number,
   cidade: '',
   estado: '',
-  hobbies: []
+  hobbies: [],
+  linguagem: [],
+  biografia: '',
 })
 
 const estados = [
@@ -65,6 +67,7 @@ const estados = [
       <div class="column">
         <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
+        <p class="confirmaSenha" v-if="dados.senha !== dados.confirmSenha">As senhas não são iguais</p>
       </div>
       <div class="column">
         <label for="">Data de nascimento:</label>
@@ -126,8 +129,61 @@ const estados = [
             />
             <label for="hobbies04">Filmes</label>
           </div>
+          
         </div>
+
+
+        <p style="margin-top: 20px;">Linguagem Favorita:</p>
+        
+
+        
+        
       </div>
+
+      <div class="row">
+
+        <div class="check-item">
+          <input
+              class="radio"
+              type="radio"
+              v-model="dados.linguagem"
+              value="C"
+              id="linguagemC"
+            />
+            <label for="linguagemC">Python</label>
+        </div>
+        <div class="check-item">
+          
+          <input
+              class="radio"
+              type="radio"
+              v-model="dados.linguagem"
+              value="Python"
+              id="linguagemPython"
+            />
+            <label for="linguagemPython">C</label>
+
+        </div>
+        <div class="check-item">
+          <input
+              class="radio"
+              type="radio"
+              v-model="dados.linguagem"
+              value="Java"
+              id="lingaugemJava"
+            />
+            <label for="linguagemJava">Java</label>
+        </div>
+          
+            
+            
+            
+        </div>
+      
+      <div style="margin-top: 15px;" class="column">
+          <label for="">Biografia:</label>
+          <textarea v-model="dados.biografia" name="biografia" id="biografia" cols="50" rows="15" required></textarea>
+        </div>
 
       <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
@@ -142,6 +198,8 @@ const estados = [
       <p>Cidade: {{ dados.cidade }}</p>
       <p>Estado: {{ dados.estado }}</p>
       <p>Hobbies: {{ dados.hobbies }}</p>
+      <p>Linguagem Favorita: {{ dados.linguagem }}</p>
+      <p>Biografia: <br> "{{ dados.biografia }}"</p>
 
       <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
     </div>
@@ -221,4 +279,31 @@ input[type='checkbox'] {
   margin-right: 0.2rem;
   margin-top: 0.3rem;
 }
+
+input[type='radio'] {
+  width: 70px;
+  margin-right: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.confirmaSenha {
+  color: red;
+}
+
+textarea {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+textarea:hover {
+  background-color: rgb(27, 24, 24);
+  color: white;
+  border: none;
+}
+
+
+
+
 </style>
