@@ -67,6 +67,9 @@ function validacaosenha(){
 </script>
 
 <template>
+  
+
+  
   <div class="container">
     <div v-if="!mostrarResultado" class="formulario">
       <h1 style="color: white">FORMULARIO</h1>
@@ -214,6 +217,7 @@ function validacaosenha(){
       <button @click="mostrarResultado = !mostrarResultado">VOLTAR</button>
     </div>
   </div>
+
 </template>
 
 <style scoped>
@@ -239,6 +243,8 @@ function validacaosenha(){
   justify-content: center;
   margin-top: 2rem;
 }
+
+
 
 .formulario {
   border-radius: 10px;
@@ -296,9 +302,7 @@ input[type='radio'] {
   margin-top: 0.3rem;
 }
 
-.confirmaSenha {
-  color: red;
-}
+
 
 textarea {
   background-color: rgb(41, 41, 41);
@@ -313,4 +317,7 @@ textarea:hover {
   color: white;
   border: none;
 }
+
+
+
 </style>
