@@ -6,7 +6,6 @@
 }
 
 input, select {
-
   background-color: rgb(41, 41, 41);
   color: white;
   width: 400px;
@@ -16,12 +15,10 @@ input, select {
   margin-bottom: 10px;
   border: none;
   
-  
 }
 
 label {
   color: white;
-  
 }
 
 input:hover {

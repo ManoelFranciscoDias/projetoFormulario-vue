@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import {reactive, ref } from 'vue'
 
 const mostrarResultado = ref(false)
 
@@ -45,31 +45,30 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
-function validacaosenha(){
-  if(dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha){
+function validacaosenha() {
+  if (dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha) {
     alert('As senhas não são iguais')
     mostrarResultado.value = false
-  }
-
-  else if (dados.nome == "" || dados.email == "" || dados.senha == "" || dados.confirmSenha == "" || dados.cidade == "" || dados.estado == "" || dados.hobbies == "" || dados.linguagem == "" || dados.data == "" ) {
-
+  } else if (
+    dados.nome == '' ||
+    dados.email == '' ||
+    dados.senha == '' ||
+    dados.confirmSenha == '' ||
+    dados.cidade == '' ||
+    dados.estado == '' ||
+    dados.hobbies == '' ||
+    dados.linguagem == '' ||
+    dados.data == ''
+  ) {
     alert(`Existem campos vazios!`)
     mostrarResultado.value = false
-
-  }
-  else{
+  } else {
     mostrarResultado.value = true
   }
 }
-
-
-
 </script>
 
 <template>
-  
-
-  
   <div class="container">
     <div v-if="!mostrarResultado" class="formulario">
       <h1 style="color: white">FORMULARIO</h1>
@@ -89,7 +88,6 @@ function validacaosenha(){
       <div class="column">
         <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
-        
       </div>
       <div class="column">
         <label for="">Data de nascimento:</label>
@@ -217,12 +215,18 @@ function validacaosenha(){
       <button @click="mostrarResultado = !mostrarResultado">VOLTAR</button>
     </div>
   </div>
-
 </template>
 
 <style scoped>
+
 .formulario {
   background-color: rgb(24, 26, 25);
+  border-radius: 10px;
+  padding: 40px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .resultado {
@@ -244,14 +248,6 @@ function validacaosenha(){
   margin-top: 2rem;
 }
 
-
-
-.formulario {
-  border-radius: 10px;
-  padding: 40px;
-}
-
-.formulario,
 .column {
   width: 40%;
   display: flex;
@@ -297,12 +293,10 @@ input[type='checkbox'] {
 }
 
 input[type='radio'] {
-  width: 70px;
-  margin-right: 0.9rem;
+  width: 50px;
+  margin-right: 0.2rem;
   margin-top: 0.3rem;
 }
-
-
 
 textarea {
   background-color: rgb(41, 41, 41);
@@ -317,7 +311,4 @@ textarea:hover {
   color: white;
   border: none;
 }
-
-
-
 </style>
