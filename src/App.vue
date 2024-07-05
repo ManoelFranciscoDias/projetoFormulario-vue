@@ -8,7 +8,7 @@ const dados = reactive({
   email: '',
   senha: '',
   confirmSenha: '',
-  data: Number,
+  data: '',
   cidade: '',
   estado: '',
   hobbies: [],
@@ -47,13 +47,23 @@ const estados = [
 ]
 function validacaosenha(){
   if(dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha){
-    alert('as senhas não são iguais')
+    alert('As senhas não são iguais')
     mostrarResultado.value = false
+  }
+
+  else if (dados.nome == "" || dados.email == "" || dados.senha == "" || dados.confirmSenha == "" || dados.cidade == "" || dados.estado == "" || dados.hobbies == "" || dados.linguagem == "" || dados.data == "" ) {
+
+    alert(`Existem campos vazios!`)
+    mostrarResultado.value = false
+
   }
   else{
     mostrarResultado.value = true
   }
 }
+
+
+
 </script>
 
 <template>
@@ -76,9 +86,7 @@ function validacaosenha(){
       <div class="column">
         <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
-        <p class="confirmaSenha" v-if="dados.senha !== dados.confirmSenha">
-          As senhas não são iguais
-        </p>
+        
       </div>
       <div class="column">
         <label for="">Data de nascimento:</label>
