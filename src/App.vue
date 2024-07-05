@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
 const mostrarResultado = ref(false)
 
@@ -13,7 +13,7 @@ const dados = reactive({
   estado: '',
   hobbies: [],
   linguagem: [],
-  biografia: '',
+  biografia: ''
 })
 
 const estados = [
@@ -45,6 +45,15 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
+function validacaosenha(){
+  if(dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha){
+    alert('as senhas não são iguais')
+    mostrarResultado.value = false
+  }
+  else{
+    mostrarResultado.value = true
+  }
+}
 </script>
 
 <template>
@@ -67,7 +76,9 @@ const estados = [
       <div class="column">
         <label for="ConfirmeSenha">Confirme a senha:</label>
         <input type="password" v-model="dados.confirmSenha" />
-        <p class="confirmaSenha" v-if="dados.senha !== dados.confirmSenha">As senhas não são iguais</p>
+        <p class="confirmaSenha" v-if="dados.senha !== dados.confirmSenha">
+          As senhas não são iguais
+        </p>
       </div>
       <div class="column">
         <label for="">Data de nascimento:</label>
@@ -129,63 +140,51 @@ const estados = [
             />
             <label for="hobbies04">Filmes</label>
           </div>
-          
         </div>
 
-
-        <p style="margin-top: 20px;">Linguagem Favorita:</p>
-        
-
-        
-        
+        <p style="margin-top: 20px">Linguagem Favorita:</p>
       </div>
 
       <div class="row">
-
         <div class="check-item">
-          <input
-              class="radio"
-              type="radio"
-              v-model="dados.linguagem"
-              value="C"
-              id="linguagemC"
-            />
-            <label for="linguagemC">Python</label>
-        </div>
-        <div class="check-item">
-          
-          <input
-              class="radio"
-              type="radio"
-              v-model="dados.linguagem"
-              value="Python"
-              id="linguagemPython"
-            />
-            <label for="linguagemPython">C</label>
-
+          <input class="radio" type="radio" v-model="dados.linguagem" value="C" id="linguagemC" />
+          <label for="linguagemC">Python</label>
         </div>
         <div class="check-item">
           <input
-              class="radio"
-              type="radio"
-              v-model="dados.linguagem"
-              value="Java"
-              id="lingaugemJava"
-            />
-            <label for="linguagemJava">Java</label>
+            class="radio"
+            type="radio"
+            v-model="dados.linguagem"
+            value="Python"
+            id="linguagemPython"
+          />
+          <label for="linguagemPython">C</label>
         </div>
-          
-            
-            
-            
+        <div class="check-item">
+          <input
+            class="radio"
+            type="radio"
+            v-model="dados.linguagem"
+            value="Java"
+            id="lingaugemJava"
+          />
+          <label for="linguagemJava">Java</label>
         </div>
-      
-      <div style="margin-top: 15px;" class="column">
-          <label for="">Biografia:</label>
-          <textarea v-model="dados.biografia" name="biografia" id="biografia" cols="50" rows="15" required></textarea>
-        </div>
+      </div>
 
-      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
+      <div style="margin-top: 15px" class="column">
+        <label for="">Biografia:</label>
+        <textarea
+          v-model="dados.biografia"
+          name="biografia"
+          id="biografia"
+          cols="50"
+          rows="15"
+          required
+        ></textarea>
+      </div>
+
+      <button @click="validacaosenha">ENVIAR</button>
     </div>
 
     <div v-if="mostrarResultado" class="resultado">
@@ -199,9 +198,12 @@ const estados = [
       <p>Estado: {{ dados.estado }}</p>
       <p>Hobbies: {{ dados.hobbies }}</p>
       <p>Linguagem Favorita: {{ dados.linguagem }}</p>
-      <p>Biografia: <br> "{{ dados.biografia }}"</p>
+      <p>
+        Biografia: <br />
+        "{{ dados.biografia }}"
+      </p>
 
-      <button @click="mostrarResultado = !mostrarResultado">MOSTRAR</button>
+      <button @click="mostrarResultado = !mostrarResultado">VOLTAR</button>
     </div>
   </div>
 </template>
@@ -295,6 +297,7 @@ textarea {
   color: white;
   border: none;
   border-radius: 10px;
+  padding: 15px;
 }
 
 textarea:hover {
@@ -302,8 +305,4 @@ textarea:hover {
   color: white;
   border: none;
 }
-
-
-
-
 </style>
