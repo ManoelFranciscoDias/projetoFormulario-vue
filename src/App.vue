@@ -1,11 +1,12 @@
 <script setup>
-import {resultado} from '@/components/resultado.vue'
-import {formulario} from '@/components/formulario.vue'
+import ResultadoAtt from '@/components/ResultadoAtt.vue'
+import FormularioAtt from '@/components/FormularioAtt.vue'
+
 </script>
 
 <template>
-  <formulario></formulario>
-  <resultado></resultado>
+  <FormularioAtt></FormularioAtt>
+  <ResultadoAtt></ResultadoAtt>
 </template>
 
 <style scoped></style>

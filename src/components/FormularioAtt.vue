@@ -1,5 +1,6 @@
 <script setup>
-import {reactive, ref } from 'vue'
+import {reactive, ref} from 'vue'
+
 const mostrarResultado = ref(false)
 
 const dados = reactive({
@@ -197,7 +198,8 @@ function validacaosenha() {
       <button @click="validacaosenha">ENVIAR</button>
     </div>
 
-    <resultado></resultado>
+   
+
 
     
   </div>
@@ -282,6 +284,11 @@ input[type='radio'] {
 
 .hobbie {
   color: white;
+  text-align: center;
+}
+
+p {
+    color: white;
   text-align: center;
 }
 

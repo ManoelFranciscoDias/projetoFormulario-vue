@@ -1,5 +1,6 @@
 <script setup>
-
+import {ref} from 'vue'
+const mostrarResultado = ref(false)
 </script>
 <template>
     <div v-if="mostrarResultado" class="resultado">
