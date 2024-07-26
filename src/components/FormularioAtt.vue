@@ -1,7 +1,7 @@
 <script setup>
-import {reactive, ref} from 'vue'
+import { reactive, ref } from 'vue'
 
-const mostrarResultado = ref(false)
+const emit = defineEmits(['resultado', 'dados'])
 
 const dados = reactive({
   nome: '',
@@ -37,7 +37,7 @@ const estados = [
   { uf: 'PI', name: 'Piauí' },
   { uf: 'RJ', name: 'Rio de Janeiro' },
   { uf: 'RN', name: 'Rio Grande do Norte' },
-  { uf: 'RS', name: 'Rio Grand <expand-box />e do Sul' },
+  { uf: 'RS', name: 'Rio Grande do Sul' },
   { uf: 'RO', name: 'Rondônia' },
   { uf: 'RR', name: 'Roraima' },
   { uf: 'SC', name: 'Santa Catarina' },
@@ -45,9 +45,10 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
+
 function validacaosenha() {
   if (dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha) {
-    alert('As senhas não são i <expand-box />guais')
+    alert('As senhas não são iguais')
     mostrarResultado.value = false
   } else if (
     dados.nome == '' ||
@@ -63,15 +64,24 @@ function validacaosenha() {
     alert(`Existem campos vazios!`)
     mostrarResultado.value = false
   } else {
-    mostrarResultado.value = true
+    emit('dados', {
+      nome: dados.nome,
+      email: dados.email,
+      senha: dados.senha,
+      confirmSenha: dados.confirmSenha,
+      data: dados.data,
+      cidade: dados.cidade,
+      estado: dados.estado,
+      hobbies: dados.hobbies,
+      linguagem: dados.linguagem,
+      biografia: dados.biografia
+    })
   }
 }
-
-
 </script>
 
 <template>
-    <div class="container">
+  <div class="container">
     <div v-if="!mostrarResultado" class="formulario">
       <h1 style="color: white">FORMULARIO</h1>
 
@@ -197,13 +207,7 @@ function validacaosenha() {
 
       <button @click="validacaosenha">ENVIAR</button>
     </div>
-
-   
-
-
-    
   </div>
-
 </template>
 <style scoped>
 .formulario {
@@ -281,16 +285,13 @@ input[type='radio'] {
   margin-top: 0.3rem;
 }
 
-
 .hobbie {
   color: white;
   text-align: center;
 }
 
 p {
-    color: white;
+  color: white;
   text-align: center;
 }
-
-
 </style>

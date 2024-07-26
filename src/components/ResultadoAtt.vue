@@ -1,25 +1,36 @@
 <script setup>
-import {ref} from 'vue'
-const mostrarResultado = ref(false)
+defineProps({
+  nome: String,
+  email: String,
+  senha: String,
+  confirm: String,
+  data: Date,
+  cidade: String,
+  estado: String,
+  hobbies: Array,
+  linguagem: Array, 
+  biografia: String
+})
+
 </script>
 <template>
-    <div v-if="mostrarResultado" class="resultado">
+    <div class="resultado">
       <h1 style="color: white">RESULTADO</h1>
-      <p>Nome: {{ dados.nome }}</p>
-      <p>Email: {{ dados.email }}</p>
-      <p>Senha: {{ dados.senha }}</p>
-      <p>Confirme sua senha: {{ dados.confirmSenha }}</p>
-      <p>Data: {{ dados.data }}</p>
-      <p>Cidade: {{ dados.cidade }}</p>
-      <p>Estado: {{ dados.estado }}</p>
-      <p>Hobbies: {{ dados.hobbies }}</p>
-      <p>Linguagem Favorita: {{ dados.linguagem }}</p>
+      <p>Nome: {{ nome }}</p>
+      <p>Email: {{ email }}</p>
+      <p>Senha: {{ senha }}</p>
+      <p>Confirme sua senha: {{ confirm }}</p>
+      <p>Data: {{ data }}</p>
+      <p>Cidade: {{ cidade }}</p>
+      <p>Estado: {{ estado }}</p>
+      <p>Hobbies: {{ hobbies }}</p>
+      <p>Linguagem Favorita: {{ linguagem }}</p>
       <p>
         Biografia: <br />
-        "{{ dados.biografia }}"
+        "{{ biografia }}"
       </p>
 
-      <button @click="mostrarResultado = !mostrarResultado">VOLTAR</button>
+      <button @click="$emit('voltar')">VOLTAR</button>
     </div>
 </template>
 
