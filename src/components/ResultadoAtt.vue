@@ -36,17 +36,21 @@ defineProps({
 
 <style scoped>
 
-.resultado {
+
+  .resultado {
   background-color: rgb(26, 24, 24);
   color: white;
   border-radius: 10px;
   padding: 40px;
   width: 40%;
+  margin: 0 auto; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 7rem;
+  justify-content: center;
+  min-height: 100vh; 
 }
+
 
 button {
   background-color: #2a5239;

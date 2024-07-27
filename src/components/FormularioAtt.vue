@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 const emit = defineEmits(['resultado', 'dados'])
 
@@ -48,8 +48,9 @@ const estados = [
 
 function validacaosenha() {
   if (dados.senha !== dados.confirmSenha || dados.confirmSenha !== dados.senha) {
+    
     alert('As senhas não são iguais')
-    mostrarResultado.value = false
+    
   } else if (
     dados.nome == '' ||
     dados.email == '' ||
@@ -61,9 +62,12 @@ function validacaosenha() {
     dados.linguagem == '' ||
     dados.data == ''
   ) {
+
     alert(`Existem campos vazios!`)
-    mostrarResultado.value = false
-  } else {
+    
+  }
+   
+  else {
     emit('dados', {
       nome: dados.nome,
       email: dados.email,
